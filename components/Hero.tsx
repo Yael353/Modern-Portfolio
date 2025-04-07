@@ -13,13 +13,13 @@ function Hero() {
           fill="white"
         />
         <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vw]"
+          className="top-10 left-[90%] h-[80vh] w-[50vw]"
           fill="purple"
         />
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight className="top-28 left-[30%] h-[100vh] w-[50vw]" fill="blue" />
       </div>
 
-      <div className="flex h-screen w-full dark:bg-black-100 items-center justify-center bg-white dark:bg-grid-white/[0.06] bg-grid-black/[0.2] top-0 left-0 absolute">
+      <div className="flex h-screen w-full dark:bg-black-100 items-center justify-center bg-white dark:bg-grid-white/[0.04] bg-grid-black/[0.2] top-0 left-0 absolute">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
@@ -33,7 +33,7 @@ function Hero() {
             words="Transforming Concepts Into Seamless User Experiences"
           />
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text:2xl">
-            Hey there, i&apos;m Yaser! A joniur Developer based in Stockholm.
+            Hey there!<br/> i&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
           </p>
           <a href="#about">
             <MagicButton title="Show my work" icon={<FaLocationArrow/>} position="right"/>
