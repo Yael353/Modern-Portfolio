@@ -16,7 +16,10 @@ function Hero() {
           className="top-10 left-[90%] h-[80vh] w-[50vw]"
           fill="purple"
         />
-        <Spotlight className="top-28 left-[30%] h-[100vh] w-[50vw]" fill="blue" />
+        <Spotlight
+          className="top-28 left-[30%] h-[100vh] w-[50vw]"
+          fill="blue"
+        />
       </div>
 
       <div className="flex h-screen w-full dark:bg-black-100 items-center justify-center bg-white dark:bg-grid-white/[0.04] bg-grid-black/[0.2] top-0 left-0 absolute">
@@ -30,13 +33,18 @@ function Hero() {
           </h2>
           <TextGenerateEffect
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concepts Into Seamless User Experiences"
+            words="Creating clean code and scalable solutions, one commit at a time."
           />
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text:2xl">
-            Hey there!<br/> i&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
+          <p className="text-center md:tracking-wider mb-4 text-md md:text-lg lg:text:2xl">
+            Hey there!
+            <br /> i&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
           </p>
           <a href="#about">
-            <MagicButton title="Show my work" icon={<FaLocationArrow/>} position="right"/>
+            <MagicButton
+              title="Show my work"
+              icon={<FaLocationArrow />}
+              position="right"
+            />
           </a>
         </div>
       </div>
