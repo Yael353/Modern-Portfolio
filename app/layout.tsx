@@ -6,18 +6,18 @@ import { ThemeProvider } from "next-themes";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Yaser's Portfolio",
+  title: "My portfolio",
   description:
-    "Explore my modern portfolio - where creativity meets innovation. ",
+    "Explore my modern portfolio - where creativity meets innovation.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
