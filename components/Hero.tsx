@@ -6,7 +6,7 @@ import { FaLocationArrow } from "react-icons/fa";
 
 function Hero() {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 pt-28">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -37,7 +37,7 @@ function Hero() {
           />
           <p className="text-center md:tracking-wider mb-4 text-md md:text-lg lg:text:2xl">
             Hey there!
-            <br /> i&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
+            <br /> I&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
           </p>
           <a href="#about">
             <MagicButton

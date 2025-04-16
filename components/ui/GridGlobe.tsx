@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
