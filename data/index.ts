@@ -89,16 +89,9 @@ export const projects = [
     iconLists: ["/next.svg", "/tail.svg", "openAI.png"],
     link: "https://github.com/Yael353/open_ai_13",
   },
-  // {
-  //   id: 3,
-  //   title: "AI Image SaaS - Canva Application",
-  //   des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-  //   img: "/p3.svg",
-  //   iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-  //   link: "https://github.com/adrianhajdin/ai_saas_app",
-  // },
+
   {
-    id: 4,
+    id: 3,
     title: "Movie-vault",
     des: "A movie discovery app with favorites, testing, SEO, and state management – built with a modern tech stack.",
     img: "/movie-vault.png",
@@ -111,5 +104,6 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/Yael353",
   },
 ];
