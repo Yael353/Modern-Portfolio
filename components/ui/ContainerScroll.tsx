@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "motion/react";
+import React, { useRef, useState, useEffect } from "react";
+import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 export const ContainerScroll = ({
   titleComponent,
@@ -10,21 +10,25 @@ export const ContainerScroll = ({
   children: React.ReactNode;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-  });
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setIsMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
+
+    if (typeof window !== "undefined") {
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
   }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: isMounted ? containerRef : null,
+  });
 
   const scaleDimensions = () => {
     return isMobile ? [0.7, 0.9] : [1.05, 1];
@@ -34,9 +38,32 @@ export const ContainerScroll = ({
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
+  if (!isMounted) {
+    return (
+      <div
+        className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2"
+        ref={containerRef}
+      >
+        <div
+          className="py-10 md:py-20 w-full relative"
+          style={{ perspective: "1000px" }}
+        >
+          <div className="div max-w-5xl mx-auto text-center pb-5">
+            {titleComponent}
+          </div>
+          <div className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#01011A] rounded-[30px] shadow-2xl">
+            <div className="h-full w-full overflow-hidden rounded-2xl dark:bg-black-200 md:rounded-2xl md:p-4">
+              {children}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 "
+      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2"
       ref={containerRef}
     >
       <div
@@ -87,7 +114,7 @@ export const Card = ({
       }}
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#01011A] rounded-[30px] shadow-2xl"
     >
-      <div className=" h-full w-full  overflow-hidden rounded-2xl dark:bg-black-200 md:rounded-2xl md:p-4 ">
+      <div className="h-full w-full overflow-hidden rounded-2xl dark:bg-black-200 md:rounded-2xl md:p-4">
         {children}
       </div>
     </motion.div>
