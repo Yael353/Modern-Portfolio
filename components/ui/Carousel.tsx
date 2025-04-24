@@ -18,7 +18,6 @@ interface SlideProps {
 
 const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
-
   const xRef = useRef(0);
   const yRef = useRef(0);
   const frameRef = useRef<number>();
@@ -50,8 +49,8 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     if (!el) return;
 
     const r = el.getBoundingClientRect();
-    xRef.current = event.clientX - (r.left + Math.floor(r.width / 2));
-    yRef.current = event.clientY - (r.top + Math.floor(r.height / 2));
+    xRef.current = event.clientX - r.left;
+    yRef.current = event.clientY - r.top;
   };
 
   const handleMouseLeave = () => {
@@ -61,15 +60,18 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
   const imageLoaded = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.style.opacity = "1";
+    if (slideRef.current) {
+      slideRef.current.style.backgroundImage = `url(${event.currentTarget.src})`;
+    }
   };
 
-  const { src, button, dec, title } = slide;
+  const { src, dec, title } = slide;
 
   return (
-    <div className="[perspective:1200px] [transform-style:preserve-3d] py-20">
+    <div className="[perspective:1000px] [transform-style:preserve-3d] py-20">
       <li
         ref={slideRef}
-        className="relative flex flex-col items-center justify-start text-center text-white rounded-xl shadow-lg w-[70vmin] h-[600px] mx-[4vmin] transition-all duration-300 ease-in-out"
+        className="relative flex flex-col items-center justify-center text-center text-white opacity-100 rounded-lg border shadow-xl w-[95vmin] pt-4 h-auto mx-[4vmin] transition-all duration-300 ease-in-out overflow-hidden"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -80,14 +82,15 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
               : "scale(1) rotateX(0deg)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
           transformOrigin: "bottom",
+          backgroundSize: "200%",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full h-auto px-4 py-4 flex flex-col items-center ">
-          <h2 className="text-3xl font-bold flex justify-center ">{title}</h2>
-
-          <div className="flex-1 flex items-center justify-center px-4 py-6">
+        <div className="w-full flex flex-col items-center justify-center z-10 relative">
+          <h2 className="text-3xl font-bold mb-6">{title}</h2>
+          <div className="w-full flex items-center justify-center px-4 pb-6">
             <img
-              className="max-h-full max-w-full object-contain rounded-lg shadow-md transition-opacity duration-600 ease-in-out"
+              className="w-full inset-0 rounded-2xl m-2 object-contain shadow-lg transition-opacity duration-600 ease-in-out pointer-events-none"
               style={{
                 opacity: current === index ? 1 : 0.6,
               }}
@@ -98,9 +101,10 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
               decoding="sync"
             />
           </div>
-          <p className="w-full absolute bottom-0 px-6 text-xl font-light text-neutral-300 pt-4">
-            {dec}
-          </p>
+        </div>
+
+        <div className="w-full px-6 pb-8 z-10 relative">
+          <p className="text-2xl font-light text-white text-start ">{dec}</p>
         </div>
       </li>
     </div>
@@ -158,7 +162,7 @@ export function Carousel({ slides }: CarouselProps) {
 
   return (
     <div
-      className="relative w-[70vmin] h-[700px] mx-auto pb-20"
+      className="relative w-[95vmin] h-[80vmin] mx-auto"
       aria-labelledby={`carousel-heading-${id}`}
     >
       <ul
@@ -178,10 +182,7 @@ export function Carousel({ slides }: CarouselProps) {
         ))}
       </ul>
 
-      <div
-        className="absolute flex justify-center w-full top-[calc(100%+6rem)]
-"
-      >
+      <div className="absolute flex justify-center w-full top-[calc(100%+1rem)] pt-4">
         <CarouselControl
           type="previous"
           title="Go to previous slide"

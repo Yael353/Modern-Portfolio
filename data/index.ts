@@ -86,7 +86,7 @@ export const projects = [
     title: "Chef mate",
     des: "Running low on meal ideas? Enter your preferences and let AI generate a delicious recipe for you!",
     img: "/chefMate.png",
-    iconLists: ["/next.svg", "/tail.svg"],
+    iconLists: ["/next.svg", "/tail.svg", "openAI.png"],
     link: "https://github.com/Yael353/open_ai_13",
   },
   // {

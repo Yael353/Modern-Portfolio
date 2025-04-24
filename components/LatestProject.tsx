@@ -37,7 +37,7 @@ function LatestProject() {
     {
       title: "Apartment - Table",
       src: "/apartment1.png",
-      dec: "",
+      dec: "This image presents a table displaying monthly average values for temperature, electricity consumption, and hot water usage. The data spans the last 18 months, providing a clear overview of consumption patterns over time.",
     },
   ];
   return (
