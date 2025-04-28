@@ -7,8 +7,6 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({ className, fill }: SpotlightProps) => {
-  console.log(cn); // Lägg till denna rad för att se vad som loggas
-
   return (
     <svg
       className={cn(
