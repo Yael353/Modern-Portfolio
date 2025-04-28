@@ -3,18 +3,26 @@
 export const dynamic = "force-dynamic";
 
 import nextDynamic from "next/dynamic";
-import Footer from "@/components/Footer";
-import Grid from "@/components/Grid";
-import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
-import LatestProject from "@/components/LatestProject";
-import RecentProjects from "@/components/RecentProjects";
+
 import { navItems } from "@/data";
 
-// Lazy load FloatingNav
+// Dynamically import components that rely on browser-only APIs
 const FloatingNav = nextDynamic(() => import("@/components/ui/FloatingNav"), {
   ssr: false,
 });
+const Hero = nextDynamic(() => import("@/components/Hero"), { ssr: false });
+const Intro = nextDynamic(() => import("@/components/Intro"), { ssr: false });
+const Grid = nextDynamic(() => import("@/components/Grid"), { ssr: false });
+const RecentProjects = nextDynamic(
+  () => import("@/components/RecentProjects"),
+  {
+    ssr: false,
+  }
+);
+const LatestProject = nextDynamic(() => import("@/components/LatestProject"), {
+  ssr: false,
+});
+const Footer = nextDynamic(() => import("@/components/Footer"), { ssr: false });
 
 export default function Home() {
   return (
