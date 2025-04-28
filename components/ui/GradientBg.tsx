@@ -35,7 +35,6 @@ export const BackgroundGradientAnimation = ({
   containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
@@ -44,12 +43,7 @@ export const BackgroundGradientAnimation = ({
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
+    if (typeof document === "undefined") return;
 
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -68,7 +62,6 @@ export const BackgroundGradientAnimation = ({
     document.body.style.setProperty("--size", size);
     document.body.style.setProperty("--blending-value", blendingValue);
   }, [
-    isMounted,
     gradientBackgroundStart,
     gradientBackgroundEnd,
     firstColor,
@@ -82,7 +75,12 @@ export const BackgroundGradientAnimation = ({
   ]);
 
   useEffect(() => {
-    if (!interactiveRef.current || !isMounted) {
+    if (typeof navigator === "undefined") return;
+    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+  }, []);
+
+  useEffect(() => {
+    if (!interactiveRef.current) {
       return;
     }
 
@@ -95,28 +93,15 @@ export const BackgroundGradientAnimation = ({
     }
 
     move();
-  }, [tgX, tgY, curX, curY, isMounted]);
+  }, [tgX, tgY, curX, curY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (interactiveRef.current && isMounted) {
+    if (interactiveRef.current) {
       const rect = interactiveRef.current.getBoundingClientRect();
       setTgX(event.clientX - rect.left);
       setTgY(event.clientY - rect.top);
     }
   };
-
-  if (!isMounted) {
-    return (
-      <div
-        className={cn(
-          "h-full w-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
-          containerClassName
-        )}
-      >
-        {children}
-      </div>
-    );
-  }
 
   return (
     <div
@@ -159,7 +144,7 @@ export const BackgroundGradientAnimation = ({
             `opacity-100`
           )}
         ></div>
-        {/* Resten av dina gradient-divar... */}
+
         {interactive && (
           <div
             ref={interactiveRef}
