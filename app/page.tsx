@@ -3,7 +3,6 @@
 export const dynamic = "force-dynamic";
 
 import nextDynamic from "next/dynamic";
-
 import { navItems } from "@/data";
 
 // Dynamically import components that rely on browser-only APIs

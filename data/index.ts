@@ -96,7 +96,7 @@ export const projects = [
     des: "A movie discovery app with favorites, testing, SEO, and state management – built with a modern tech stack.",
     img: "/movie-vault.png",
     iconLists: ["/re.svg", "/red.png", "/seo.svg", "/tail.svg", "/cyp.png"],
-    link: "https://movie-vault-6549505xq-yaels-projects-0caf7cbe.vercel.app/",
+    link: "https://movie-vault-eight.vercel.app/",
   },
 ];
 

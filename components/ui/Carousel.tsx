@@ -59,9 +59,6 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
   const imageLoaded = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.style.opacity = "1";
-    if (slideRef.current) {
-      slideRef.current.style.backgroundImage = `url(${event.currentTarget.src})`;
-    }
   };
 
   const { src, dec, title } = slide;
@@ -89,7 +86,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           <h2 className="text-3xl font-bold mb-6">{title}</h2>
           <div className="w-full flex items-center justify-center px-4 pb-6">
             <img
-              className="w-full inset-0 rounded-2xl m-2 object-contain shadow-lg transition-opacity duration-600 ease-in-out pointer-events-none"
+              className="w-full  inset-0 rounded-2xl m-2 object-contain shadow-lg transition-opacity duration-600 ease-in-out pointer-events-none"
               style={{
                 opacity: current === index ? 1 : 0.6,
               }}
@@ -123,7 +120,7 @@ const CarouselControl = ({
 }: CarouselControlProps) => {
   return (
     <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
+      className={`w-10 h-10 flex items-center mx-2 justify-center  dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
         type === "previous" ? "rotate-180" : ""
       }`}
       title={title}
