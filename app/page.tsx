@@ -2,14 +2,19 @@
 
 export const dynamic = "force-dynamic";
 
+import nextDynamic from "next/dynamic";
 import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import LatestProject from "@/components/LatestProject";
 import RecentProjects from "@/components/RecentProjects";
-import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
+
+// Lazy load FloatingNav
+const FloatingNav = nextDynamic(() => import("@/components/ui/FloatingNav"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (

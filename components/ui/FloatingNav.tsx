@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { cn } from "@/utils/cn";
 
-export const FloatingNav = ({
+const FloatingNav = ({
   navItems,
   className,
 }: {
@@ -78,3 +78,5 @@ export const FloatingNav = ({
     </AnimatePresence>
   );
 };
+
+export default FloatingNav;
