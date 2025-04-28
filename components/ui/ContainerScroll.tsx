@@ -27,7 +27,7 @@ export const ContainerScroll = ({
   }, []);
 
   const { scrollYProgress } = useScroll({
-    target: isMounted ? containerRef : null,
+    target: isMounted ? containerRef : undefined,
   });
 
   const scaleDimensions = () => {
