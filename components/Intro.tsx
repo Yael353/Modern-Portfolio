@@ -6,7 +6,7 @@ import { ContainerScroll } from "./ui/ContainerScroll";
 function Intro() {
   const titleComponent = "";
   return (
-    <div className="">
+    <div id="about">
       <p>Hej</p>
       <div className="flex flex-col">
         <ContainerScroll titleComponent={titleComponent}>

@@ -41,7 +41,7 @@ function Hero() {
             Hey there!
             <br /> I&apos;m Yaser, a Junior WebDeveloper Based In Sweden.
           </p>
-          <a href="#about">
+          <a href="#projects">
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}
