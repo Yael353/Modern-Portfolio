@@ -7,7 +7,6 @@ function Intro() {
   const titleComponent = "";
   return (
     <div id="about">
-      <p>Hej</p>
       <div className="flex flex-col">
         <ContainerScroll titleComponent={titleComponent}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-16 px-6">

@@ -83,10 +83,16 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Chef mate",
+    title: "Chefmate",
     des: "Running low on meal ideas? Enter your preferences and let AI generate a delicious recipe for you!",
     img: "/chefMate.png",
-    iconLists: ["/next.svg", "/tail.svg", "openAI.png"],
+    iconLists: [
+      "/next.svg",
+      "openAI.png",
+      "MySQL.png",
+      "Node.png",
+      "/tail.svg",
+    ],
     link: "https://github.com/Yael353/open_ai_13",
   },
 
@@ -95,7 +101,7 @@ export const projects = [
     title: "Movie-vault",
     des: "A movie discovery app with favorites, testing, SEO, and state management – built with a modern tech stack.",
     img: "/movie-vault.png",
-    iconLists: ["/re.svg", "/red.png", "/seo.svg", "/tail.svg", "/cyp.png"],
+    iconLists: ["/re.svg", "/red.png", "/cyp.png", "/seo.svg", "/tail.svg"],
     link: "https://movie-vault-eight.vercel.app/",
   },
 ];
