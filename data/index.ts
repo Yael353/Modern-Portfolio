@@ -30,14 +30,16 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title:
+      "Currently developing a web portal aimed at improving the living environment for tenants.",
+    description: "The Inside Scoop",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "",
-    titleClassName: "justify-center",
-    img: "",
-    spareImg: "",
+    imgClassName: "absolute right-0 bottom-0 md:w-54 w-60",
+    titleClassName: "flex items-start md:text-sm",
+    img: "/b5.svg",
+    spareImg: "/grid.svg",
   },
+
   {
     id: 4,
     title: "Tech enthusiast with a passion for development.",
@@ -51,15 +53,15 @@ export const gridItems = [
 
   {
     id: 5,
-    title:
-      "Currently developing a web portal aimed at improving the living environment for tenants.",
-    description: "The Inside Scoop",
-    className: "md:col-span-3 md:row-span-2",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-    titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
+    title: "My tech stack",
+    description: "I constantly try to improve",
+    className: "md:col-span-3 md:row-span-2 ",
+    imgClassName: "",
+    titleClassName: "flex items-start md:text-sm",
+    img: "",
+    spareImg: "",
   },
+
   {
     id: 6,
     title: "Got an idea? Let’s turn it into reality!",
@@ -94,6 +96,14 @@ export const projects = [
       "/tail.svg",
     ],
     link: "https://github.com/Yael353/open_ai_13",
+  },
+  {
+    id: 3,
+    title: "Forge UI",
+    des: "a flexible, modern component library and UI builder for developers who want to build beautiful, production-ready interfaces faster.",
+    img: "/Forge123.png",
+    iconLists: ["re.svg", "/ts.svg", "/tail.svg"],
+    link: "https://examensarbete-forge-ui.vercel.app/",
   },
 
   {

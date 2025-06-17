@@ -9,10 +9,10 @@ function RecentProjects() {
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
-        A small Selection of {""}
+        A Selection of {""}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="flex flex-wrap item justify-center p-4 gap-x-36 gap-y-8 lg:gap-y-24 mt-10">
+      <div className="flex flex-wrap item sm:h-auto justify-center p-4 gap-x-36 gap-y-8  lg:gap-y-24 mt-10">
         {projects.map(({ id, title, des, img, iconLists, link }) => (
           <div
             key={id}

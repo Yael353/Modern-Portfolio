@@ -6,7 +6,7 @@ import { socialMedia } from "@/data";
 
 function Footer() {
   return (
-    <footer className="w-full mb-[100px] pt-32 pb-20 md:mb-5" id="contact">
+    <footer className="w-full pt-32 pb-20 md:mb-5" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take <span className="text-purple">Your</span> digital
@@ -23,7 +23,7 @@ function Footer() {
           />
         </a>
       </div>
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
+      <div className="flex mt-16 flex-row justify-between items-center">
         <p className="md:text-base text-sm md:font-normail font font-light">
           Copyright © 2025 Yaser
         </p>

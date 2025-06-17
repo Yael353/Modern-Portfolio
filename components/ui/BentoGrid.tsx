@@ -50,8 +50,11 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "C#", "Typescript"];
-  const rightLists = ["AWS", "SEO", "Redux"];
+  const firstList = ["HTML", "CSS", "Javascript"];
+  const secondList = ["React.js", "Next.js", "TypeScript"];
+  const thirdList = ["Tailwind", "Node.js", "Redux"];
+  const forthList = ["AWS", "SEO", "MySQL"];
+  const fifthList = ["C#", "Vite", "Thunder Client"];
 
   const [copied, setCopied] = useState(false);
 
@@ -94,7 +97,7 @@ export const BentoGridItem = ({
         </div>
         <div
           className={`absolute right-0 -bottom-5 ${
-            id === 5 && "w-full opacity-80"
+            id === 3 && "w-full opacity-80"
           } `}
         >
           {spareImg && (
@@ -129,10 +132,10 @@ export const BentoGridItem = ({
 
           {id === 2 && <GlobeDemo />}
 
-          {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {leftLists.map((item, i) => (
+          {id === 5 && (
+            <div className="flex md:bottom-10 sm:right-0 gap-1 lg:gap-x-4 lg:gap-y-0 w-fit absolute lg:right-10 lg:bottom-10 md:right-4">
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-4 lg:mt-5">
+                {firstList.map((item, i) => (
                   <span
                     key={i}
                     className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
@@ -143,9 +146,9 @@ export const BentoGridItem = ({
                 ))}
                 <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
               </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-4 lg:mt-5">
                 <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-                {rightLists.map((item, i) => (
+                {secondList.map((item, i) => (
                   <span
                     key={i}
                     className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
@@ -154,6 +157,42 @@ export const BentoGridItem = ({
                     {item}
                   </span>
                 ))}
+              </div>
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-4 lg:mt-5">
+                {thirdList.map((item, i) => (
+                  <span
+                    key={i}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-4 lg:mt-5">
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
+                {forthList.map((item, i) => (
+                  <span
+                    key={i}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-4 lg:mt-5">
+                {fifthList.map((item, i) => (
+                  <span
+                    key={i}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
               </div>
             </div>
           )}

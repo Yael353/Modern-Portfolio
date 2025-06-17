@@ -45,9 +45,9 @@ function LatestProject() {
   return (
     <div className="flex justify-center items-center py-20" id="recentProject">
       <h1 className="heading">
-        My most recent work — and the one{" "}
-        <span className="text-purple"> I&apos;m most proud of.</span>
-        <div className="py-10">
+        As part of my internship, I had the opportunity to develop {" "}
+        <span className="text-purple">Web Portal </span>
+        <div className="py-32">
           <Carousel slides={slides} />
         </div>
       </h1>
