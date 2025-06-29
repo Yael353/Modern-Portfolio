@@ -8,7 +8,7 @@ function LatestProject() {
     {
       title: "Log in",
       src: "/login.png",
-      dec: "This  login page is a secure and responsive, it features username and password inputs. The authentication system uses access tokens and localStorage to maintain user sessions and enable automatic login after reloads or returning visits.",
+      dec: "This login page is secure and responsive, it features username and password inputs. The authentication system uses access tokens and localStorage to maintain user sessions and enable automatic login after reloads or returning visits.",
     },
     {
       title: "Overview",
@@ -45,7 +45,7 @@ function LatestProject() {
   return (
     <div className="flex justify-center items-center py-20" id="recentProject">
       <h1 className="heading">
-        As part of my internship, I had the opportunity to develop {" "}
+        As part of my internship I had the opportunity to build a{" "}
         <span className="text-purple">Web Portal </span>
         <div className="py-32">
           <Carousel slides={slides} />
