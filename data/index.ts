@@ -107,7 +107,7 @@ export const projects = [
   },
 
   {
-    id: 3,
+    id: 4,
     title: "Movie-vault",
     des: "A movie discovery app with favorites, testing, SEO, and state management – built with a modern tech stack.",
     img: "/movie-vault.png",

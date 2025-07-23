@@ -67,7 +67,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     <div className="[perspective:1000px] [transform-style:preserve-3d] py-20">
       <li
         ref={slideRef}
-        className="relative flex flex-col items-center justify-center text-center text-white opacity-100 rounded-lg border shadow-xl w-[95vmin] pt-4 h-auto mx-[4vmin] transition-all duration-300 ease-in-out overflow-hidden"
+        className="relative flex flex-col items-center justify-center text-center text-white opacity-100 rounded-lg border shadow-xl w-[95vmin] pt-4 h-auto mx-[4vmin] mb-8 md:mb-16 transition-all duration-300 ease-in-out overflow-hidden"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -158,7 +158,7 @@ export function Carousel({ slides }: CarouselProps) {
 
   return (
     <div
-      className="relative w-[95vmin] h-[80vmin] mx-auto "
+      className="relative w-[95vmin] min-h-[calc(100svh-300px)] mx-auto pb-24"
       aria-labelledby={`carousel-heading-${id}`}
     >
       <ul
@@ -178,13 +178,13 @@ export function Carousel({ slides }: CarouselProps) {
         ))}
       </ul>
 
-      <div className="absolute flex justify-center w-full sm:top-[calc(100%+1rem)] top-[calc(150%+1rem)] pt-4">
+      <div className="absolute flex justify-center w-full bottom-[-12rem] md:bottom-[-8rem] pt-8">
+        {/* Uppdaterad position */}
         <CarouselControl
           type="previous"
           title="Go to previous slide"
           handleClick={handlePreviousClick}
         />
-
         <CarouselControl
           type="next"
           title="Go to next slide"

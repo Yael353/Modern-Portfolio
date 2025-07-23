@@ -43,14 +43,21 @@ function LatestProject() {
     },
   ];
   return (
-    <div className="flex justify-center items-center py-20" id="recentProject">
-      <h1 className="heading">
-        As part of my internship I had the opportunity to build a{" "}
-        <span className="text-purple">Web Portal </span>
-        <div className="py-32">
+    <div
+      className="flex justify-center items-center py-10 md:py-20"
+      id="recentProject"
+    >
+      <div className="text-center">
+        <h1 className="heading">
+          As part of my internship I had the opportunity to build a{" "}
+          <span className="text-purple">Web Portal </span>
+        </h1>
+        <div className="pt-16 pb-32">
+          {" "}
+          {/* Uppdaterad padding */}
           <Carousel slides={slides} />
         </div>
-      </h1>
+      </div>
     </div>
   );
 }

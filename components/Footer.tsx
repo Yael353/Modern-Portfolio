@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { socialMedia } from "@/data";
 
 function Footer() {
   return (
-    <footer className="w-full pt-32 pb-20 md:mb-5" id="contact">
+    <footer className="w-full pt-20 pb-10 md:pt-32 md:pb-20" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take <span className="text-purple">Your</span> digital

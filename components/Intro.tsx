@@ -9,7 +9,7 @@ function Intro() {
     <div id="about">
       <div className="flex flex-col">
         <ContainerScroll titleComponent={titleComponent}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-16 px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6">
             <div className="text-center md:text-left space-y-6">
               <h3 className="text-3xl text-purple font-bold">About Me</h3>
               <p className="text-white text-xl leading-relaxed">
@@ -24,7 +24,7 @@ function Intro() {
             </div>
             <div className="flex justify-center">
               <img
-                src="/me.png"
+                src="/test2.jpg"
                 alt="b5"
                 className="max-w-xs md:max-w-sm lg:max-w-md rounded-full"
               />
