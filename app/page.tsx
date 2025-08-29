@@ -4,6 +4,7 @@ export const dynamic = "force-dynamic";
 
 import nextDynamic from "next/dynamic";
 import { navItems } from "@/data";
+import { skillsData } from "@/data/icons";
 
 // Dynamically import components that rely on browser-only APIs
 const FloatingNav = nextDynamic(() => import("@/components/ui/FloatingNav"), {
@@ -11,7 +12,7 @@ const FloatingNav = nextDynamic(() => import("@/components/ui/FloatingNav"), {
 });
 const Hero = nextDynamic(() => import("@/components/Hero"), { ssr: false });
 const Intro = nextDynamic(() => import("@/components/Intro"), { ssr: false });
-const Grid = nextDynamic(() => import("@/components/Grid"), { ssr: false });
+const Skills = nextDynamic(() => import("@/components/Skills"), { ssr: false });
 const RecentProjects = nextDynamic(
   () => import("@/components/RecentProjects"),
   {
@@ -30,7 +31,7 @@ export default function Home() {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Intro />
-        <Grid />
+        <Skills skillsData={skillsData}/>
         <RecentProjects />
         <LatestProject />
         <Footer />
