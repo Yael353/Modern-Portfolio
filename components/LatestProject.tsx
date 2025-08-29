@@ -54,7 +54,7 @@ function LatestProject() {
         </h1>
         <div className="pt-16 pb-32">
           {" "}
-          {/* Uppdaterad padding */}
+       
           <Carousel slides={slides} />
         </div>
       </div>
