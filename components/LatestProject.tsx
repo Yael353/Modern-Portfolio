@@ -44,17 +44,16 @@ function LatestProject() {
   ];
   return (
     <div
-      className="flex justify-center items-center py-10 md:py-20"
+      className="flex justify-center items-center py-10 md:py-20 lg:py-30"
       id="recentProject"
     >
       <div className="text-center">
-        <h1 className="heading">
+        <h1 className="heading text-gray-200">
           As part of my internship I had the opportunity to build a{" "}
           <span className="text-purple">Web Portal </span>
         </h1>
         <div className="pt-16 pb-32">
           {" "}
-       
           <Carousel slides={slides} />
         </div>
       </div>

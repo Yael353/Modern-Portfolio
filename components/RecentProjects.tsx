@@ -8,7 +8,7 @@ import { FaLocationArrow } from "react-icons/fa";
 function RecentProjects() {
   return (
     <div className="py-20" id="projects">
-      <h1 className="heading">
+      <h1 className="heading text-gray-200">
         A Selection of {""}
         <span className="text-purple">recent projects</span>
       </h1>
@@ -25,10 +25,10 @@ function RecentProjects() {
                 </div>
                 <img src={img} alt={title} className="z-10 absolute bottom-0" />
               </div>
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
                 {title}
               </h1>
-              <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2">
+              <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 text-gray-200">
                 {des}
               </p>
               <div className="flex items-center justify-between mt-7 mb-3 ">

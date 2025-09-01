@@ -64,7 +64,7 @@ function Skills({ skillsData }: { skillsData: Skill[] }) {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl z-50 md:text-5xl font-bold p-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+          <h2 className="text-4xl text-purple z-50 md:text-5xl font-bold p-4 bg-clip-text ">
             My Skills
           </h2>
           <p className="text-center md:tracking-wider mb-4 text-md md:text-lg lg:text-2xl">
@@ -83,7 +83,7 @@ function Skills({ skillsData }: { skillsData: Skill[] }) {
             className={`px-4 py-2 rounded-full transition-all duration-300 ${
               activeCategory === "all"
                 ? "bg-blue-600 text-white shadow-lg"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:shadow-md"
+                : " bg-slate-800  text-slate-300 hover:shadow-md"
             }`}
           >
             All Skills
@@ -168,7 +168,7 @@ function SkillCard({
       whileHover={{ y: -5 }}
     >
       <div
-        className={`h-40  bg-white dark:bg-slate-800 rounded-xl shadow-md flex flex-col items-center justify-center p-4 transition-all duration-300 ${
+        className={`h-40  bg-slate-800 rounded-xl shadow-md flex flex-col items-center justify-center p-4 transition-all duration-300 ${
           isHovered
             ? "shadow-lg ring-2 ring-opacity-50 " +
               (skill.category === "language"
@@ -183,12 +183,11 @@ function SkillCard({
             : ""
         }`}
       >
-        {/* Skill Icon */}
         <div className="w-14 h-14 rounded-full mb-3 flex items-center justify-center text-3xl">
           {skill.icon}
         </div>
 
-        <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-center">
+        <h3 className="font-semibold  text-slate-200 text-center">
           {skill.name}
         </h3>
       </div>
