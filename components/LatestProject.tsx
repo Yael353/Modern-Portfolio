@@ -30,7 +30,6 @@ function LatestProject() {
       src: "/dashboard3.png",
       dec: "This section presents apartment statistics, such as electricity consumption, water usage, and indoor temperature, in a table organized by apartment size. It also allows users to click on individual apartments to view specific data for each one.",
     },
-
     {
       title: "Apartment - Chart",
       src: "/apartment.png",
@@ -42,20 +41,18 @@ function LatestProject() {
       dec: "This image presents a table displaying monthly average values for temperature, electricity consumption, and hot water usage. The data spans the last 18 months, providing a clear overview of consumption patterns over time.",
     },
   ];
+
   return (
     <div
-      className="flex justify-center items-center py-10 md:py-20 lg:py-30"
+      className="flex flex-col justify-center items-center py-10 md:py-20 lg:py-30"
       id="recentProject"
     >
-      <div className="text-center">
-        <h1 className="heading text-gray-200">
-          As part of my internship I had the opportunity to build a{" "}
-          <span className="text-purple">Web Portal </span>
-        </h1>
-        <div className="pt-16 pb-32">
-          {" "}
-          <Carousel slides={slides} />
-        </div>
+      <h1 className="heading text-gray-200">
+        As part of my internship I had the opportunity to build a{" "}
+        <span className="text-purple">Web Portal </span>
+      </h1>
+      <div className="text-center pt-16 w-full h-screen">
+        <Carousel slides={slides} />
       </div>
     </div>
   );

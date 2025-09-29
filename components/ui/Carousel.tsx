@@ -1,5 +1,4 @@
 "use client";
-import { IconArrowNarrowRight } from "@tabler/icons-react";
 import { useState, useRef, useId, useEffect } from "react";
 
 interface SlideData {
@@ -12,10 +11,9 @@ interface SlideProps {
   slide: SlideData;
   index: number;
   current: number;
-  handleSlideClick: (index: number) => void;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
+const Slide = ({ slide, index, current }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
   const xRef = useRef(0);
   const yRef = useRef(0);
@@ -64,70 +62,65 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
   const { src, dec, title } = slide;
 
   return (
-    <div className="[perspective:1000px] [transform-style:preserve-3d] py-20">
-      <li
-        ref={slideRef}
-        className="relative flex flex-col items-center justify-center text-center text-white opacity-100 rounded-lg border shadow-xl w-[95vmin] pt-4 h-auto mx-[4vmin] mb-8 md:mb-16 transition-all duration-300 ease-in-out overflow-hidden"
-        onClick={() => handleSlideClick(index)}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+    <li
+      ref={slideRef}
+      className="relative flex flex-col items-center justify-center text-center text-white h-screen max-w-full transition-opacity duration-700 ease-in-out"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        opacity: current === index ? 1 : 0.7,
+        transform: `translateY(${(current - index) * 10}px)`,
+        transition: "opacity 0.7s ease-in-out, transform 0.7s ease-in-out",
+      }}
+    >
+      <div
+        className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center z-10 relative px-4 transition-all duration-700 ease-in-out"
         style={{
-          transform:
-            current !== index
-              ? "scale(0.98) rotateX(8deg)"
-              : "scale(1) rotateX(0deg)",
-          transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-          transformOrigin: "bottom",
-          backgroundSize: "200%",
-          backgroundRepeat: "no-repeat",
+          transform: current === index ? "scale(1)" : "scale(0.95)",
+          filter: current === index ? "blur(0px)" : "blur(1px)",
         }}
       >
-        <div className="w-full flex flex-col items-center justify-center z-10 relative">
-          <h2 className="text-3xl font-bold mb-6">{title}</h2>
-          <div className="w-full flex items-center justify-center px-4 pb-6">
-            <img
-              className="w-full  inset-0 rounded-2xl m-2 object-contain shadow-lg transition-opacity duration-600 ease-in-out pointer-events-none"
-              style={{
-                opacity: current === index ? 1 : 0.6,
-              }}
-              alt={title}
-              src={src}
-              onLoad={imageLoaded}
-              loading="eager"
-              decoding="sync"
-            />
-          </div>
+        <h2
+          className="text-4xl md:text-5xl font-bold mb-8 transition-all duration-700 ease-in-out"
+          style={{
+            opacity: current === index ? 1 : 0.5,
+            transform:
+              current === index ? "translateY(0)" : "translateY(-20px)",
+          }}
+        >
+          {title}
+        </h2>
+        <div
+          className="w-full flex items-center justify-center mb-8 transition-all duration-700 ease-in-out"
+          style={{
+            transform: current === index ? "scale(1)" : "scale(0.98)",
+          }}
+        >
+          <img
+            className="w-full max-w-7xl h-auto rounded-2xl object-contain shadow-lg transition-all duration-700 ease-in-out pointer-events-none"
+            style={{
+              opacity: current === index ? 1 : 0.6,
+            }}
+            alt={title}
+            src={src}
+            onLoad={imageLoaded}
+            loading="eager"
+            decoding="sync"
+          />
         </div>
-
-        <div className="w-full px-6 pb-8 z-10 relative">
-          <p className="text-2xl font-light text-white text-start ">{dec}</p>
+        <div
+          className="w-full max-w-4xl px-4 transition-all duration-700 ease-in-out"
+          style={{
+            opacity: current === index ? 1 : 0.5,
+            transform: current === index ? "translateY(0)" : "translateY(20px)",
+          }}
+        >
+          <p className="text-xl md:text-2xl font-light text-white text-center">
+            {dec}
+          </p>
         </div>
-      </li>
-    </div>
-  );
-};
-
-interface CarouselControlProps {
-  type: string;
-  title: string;
-  handleClick: () => void;
-}
-
-const CarouselControl = ({
-  type,
-  title,
-  handleClick,
-}: CarouselControlProps) => {
-  return (
-    <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center  dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
-        type === "previous" ? "rotate-180" : ""
-      }`}
-      title={title}
-      onClick={handleClick}
-    >
-      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" />
-    </button>
+      </div>
+    </li>
   );
 };
 
@@ -137,59 +130,105 @@ interface CarouselProps {
 
 export function Carousel({ slides }: CarouselProps) {
   const [current, setCurrent] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isScrolling = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout>();
 
-  const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? slides.length - 1 : previous);
-  };
+  const scrollToSlide = (index: number) => {
+    if (containerRef.current) {
+      const slideElement = containerRef.current.children[index] as HTMLElement;
+      if (slideElement) {
+        isScrolling.current = true;
+        slideElement.scrollIntoView({ behavior: "smooth" });
 
-  const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === slides.length ? 0 : next);
-  };
-
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
+        // Reset scrolling flag after animation completes
+        setTimeout(() => {
+          isScrolling.current = false;
+        }, 800);
+      }
     }
   };
+
+  // Hantera scroll-events för att byta slide
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (isScrolling.current) return;
+
+      const scrollPosition = container.scrollTop;
+      const slideHeight = window.innerHeight;
+      const newCurrent = Math.round(scrollPosition / slideHeight);
+
+      if (newCurrent !== current) {
+        setCurrent(newCurrent);
+      }
+    };
+
+    // Förbättrad scroll-hantering med requestAnimationFrame
+    let ticking = false;
+
+    const smoothHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    container.addEventListener("scroll", smoothHandleScroll);
+
+    return () => {
+      container.removeEventListener("scroll", smoothHandleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, [current]);
+
+  // CSS transitions för att göra scrollningen mjukare
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      .smooth-scroll-container {
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+      }
+      .smooth-scroll-container > * {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+    `;
+    document.head.append(style);
+
+    return () => {
+      style.remove();
+    };
+  }, []);
 
   const id = useId();
 
   return (
-    <div
-      className="relative w-[95vmin] min-h-[calc(100svh-300px)] mx-auto pb-24"
-      aria-labelledby={`carousel-heading-${id}`}
-    >
-      <ul
-        className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
-        style={{
-          transform: `translateX(-${current * (100 / slides.length)}%)`,
-        }}
+    <div className="relative w-full" aria-labelledby={`carousel-heading-${id}`}>
+      <div
+        ref={containerRef}
+        className="h-screen overflow-y-auto smooth-scroll-container"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+          .smooth-scroll-container {
+            scroll-behavior: smooth;
+          }
+        `}</style>
         {slides.map((slide, index) => (
-          <Slide
-            key={index}
-            slide={slide}
-            index={index}
-            current={current}
-            handleSlideClick={handleSlideClick}
-          />
+          <Slide key={index} slide={slide} index={index} current={current} />
         ))}
-      </ul>
-
-      <div className="absolute flex justify-center w-full bottom-[-12rem] md:bottom-[-8rem] pt-8">
-        {/* Uppdaterad position */}
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
       </div>
     </div>
   );
