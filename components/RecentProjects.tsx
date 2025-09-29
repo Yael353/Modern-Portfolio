@@ -12,14 +12,20 @@ function RecentProjects() {
         A Selection of {""}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="flex flex-wrap item sm:h-auto justify-center p-4 gap-x-36 gap-y-8  lg:gap-y-24 mt-10">
+      <div className="flex flex-wrap items-center justify-center p-4 lg:gap-x-32 gap-y-16 lg:gap-y-24 mt-10 ">
+        {" "}
+        
         {projects.map(({ id, title, des, img, iconLists, link }) => (
           <div
             key={id}
-            className="sm:h-[41rem] h-[32rem] lg:min-h[32.5rem] sm:w-[500px] flex items-center justify-center w-[80vw]"
+            className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] sm:w-[500px] w-[80vw] flex items-center justify-center"
+            style={{
+              position: "relative",
+              zIndex: 1,
+            }}
           >
             <PinContainer title={link} href={link}>
-              <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] sm:h-[40vh] h-[30vh] overflow-hidden mb-10">
+              <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] sm:h-[40vh] h-[30vh] overflow-hidden mb-10 ">
                 <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]">
                   <img src="/bg.png" alt="bg-img" />
                 </div>
@@ -31,7 +37,7 @@ function RecentProjects() {
               <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 text-gray-200">
                 {des}
               </p>
-              <div className="flex items-center justify-between mt-7 mb-3 ">
+              <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
                   {iconLists.map((icon, index) => (
                     <div
@@ -44,10 +50,10 @@ function RecentProjects() {
                   ))}
                 </div>
                 <div className="flex justify-center items-center">
-                  {/* <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
                     Check Live Set
                   </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" /> */}
+                  <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>
               </div>
             </PinContainer>

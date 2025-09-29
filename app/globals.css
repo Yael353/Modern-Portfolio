@@ -66,6 +66,15 @@
   }
 }
 
+.group\/pin {
+  transform-style: preserve-3d;
+}
+
+
+.perspective-1000 {
+  transform-style: preserve-3d;
+}
+
 @layer base {
   * {
     @apply border-border !scroll-smooth;
